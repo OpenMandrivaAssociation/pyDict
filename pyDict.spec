@@ -1,21 +1,22 @@
 %define pydict_version 0.2.5.1
-%define pydict_release 13
+%define pydict_release 14
 
 Summary:	pyDict - An English/Chinese Dictionary written with python/gtk
 Name:		pyDict
 Version:	%{pydict_version}
 Release:	%mkrel %{pydict_release}
-Url:		http://sourceforge/projects/pydict/
+Url:		http://sourceforge.net/projects/pydict/
 License:	GPL
 Group:		Text tools
 Buildroot:	%_tmppath/%name-%version-%release-root
 
-Source0:	http://sourceforge/projects/pydict/pyDict-%{pydict_version}.tar.bz2
-Source1:	pyDict.desktop
+Source0:	http://sourceforge.net/projects/pydict/pyDict-%{pydict_version}.tar.bz2
 Patch2:		pyDict-C2E.patch
+Patch3:		pyDict-data-path.patch
+Patch4:		pyDict-desktop.patch
 
 Requires:	locales-zh pygtk
-
+BuildArch:	noarch
 BuildRequires:  desktop-file-utils
 
 %description
@@ -27,13 +28,16 @@ Window GUI mode.
 %prep
 %setup -q
 %patch2 -p1
+%patch3 -p0
+%patch4 -p0
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT%{_libdir}/X11/pyDict/
-mkdir -p $RPM_BUILD_ROOT%{_bindir}
-install -m 644 yaba.xpm $RPM_BUILD_ROOT%{_libdir}/X11/pyDict/
-install  -m 755 dict.py $RPM_BUILD_ROOT%{_bindir}/pydict.real
+
+install -D -m 644 dict.xpm $RPM_BUILD_ROOT%{_iconsdir}/dict.xpm
+install -D -m 644 yaba.xpm $RPM_BUILD_ROOT%{_datadir}/%{name}/yaba.xpm
+install -D -m 755 dict.py $RPM_BUILD_ROOT%{_bindir}/pydict.real
+
 cat << EOF > pydict.sh
 #!/bin/bash
 # pydict only works in big5 encoding
@@ -41,40 +45,30 @@ export LC_ALL=zh_TW.Big5
 exec pydict.real
 EOF
 install  -m 755  pydict.sh $RPM_BUILD_ROOT%{_bindir}/pydict
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/gnome/apps/Chinese
+
 for i in a b c d e f g h i j k l m n o p q r s t u v w x y z
-	do install -m 644 $i.lib $RPM_BUILD_ROOT%{_libdir}/X11/pyDict/
+	do install -m 644 $i.lib $RPM_BUILD_ROOT%{_datadir}/%{name}
 done
-install -m 644 HELP $RPM_BUILD_ROOT%{_libdir}/X11/pyDict/
+install -m 644 HELP $RPM_BUILD_ROOT%{_datadir}/%{name}/
 
 # menu XDG
-install -m 644 %{SOURCE1} \
-		$RPM_BUILD_ROOT%{_datadir}/gnome/apps/Chinese/pyDict.desktop
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applnk/Chinese/
-
-%__mkdir $RPM_BUILD_ROOT%{_datadir}/applications
-%__cp  $RPM_BUILD_ROOT%{_datadir}/gnome/apps/Chinese/pyDict.desktop $RPM_BUILD_ROOT%{_datadir}/applications/pyDict.desktop
-
-
-desktop-file-install --vendor="" \
-  --remove-category="Application" \
-  --add-category="X-MandrivaLinux-Office-Accessories" \
-  --add-category="Office" \
-  --add-category="Dictionary" \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
+mkdir -p %buildroot%_datadir/applications
+desktop-file-install --vendor='' \
+	--remove-category="Application" \
+	--add-category="X-MandrivaLinux-Office-Accessories" \
+	--add-category="Office" \
+	--add-category="Dictionary" \
+	--dir $RPM_BUILD_ROOT%{_datadir}/applications %{name}.desktop
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%dir %{_libdir}/X11/pyDict
-%doc CHANGELOG COPYING README install.sh
-%{_libdir}/X11/pyDict/*
-%{_datadir}/gnome/apps/Chinese/pyDict.desktop
+%doc CHANGELOG COPYING README
+%{_datadir}/%{name}
 %defattr(755,root,root,755)
 %{_bindir}/pydict
 %{_bindir}/pydict.real
+%{_iconsdir}/*
 %{_datadir}/applications/pyDict.desktop
-
-
