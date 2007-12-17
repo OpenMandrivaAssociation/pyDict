@@ -8,7 +8,6 @@ Release:	%mkrel %{pydict_release}
 Url:		http://sourceforge.net/projects/pydict/
 License:	GPL
 Group:		Text tools
-Buildroot:	%_tmppath/%name-%version-%release-root
 
 Source0:	http://sourceforge.net/projects/pydict/pyDict-%{pydict_version}.tar.bz2
 Patch2:		pyDict-C2E.patch
