@@ -1,5 +1,5 @@
 %define pydict_version 0.2.5.1
-%define pydict_release 14
+%define pydict_release 15
 
 Summary:	pyDict - An English/Chinese Dictionary written with python/gtk
 Name:		pyDict
@@ -64,10 +64,9 @@ desktop-file-install --vendor='' \
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %doc CHANGELOG COPYING README
 %{_datadir}/%{name}
-%defattr(755,root,root,755)
 %{_bindir}/pydict
 %{_bindir}/pydict.real
 %{_iconsdir}/*
