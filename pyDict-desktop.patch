@@ -1,0 +1,17 @@
+--- pyDict.desktop	2000-09-04 10:57:05.000000000 +0800
++++ pyDict.desktop	2007-08-24 02:30:13.000000000 +0800
+@@ -1,10 +1,10 @@
+ [Desktop Entry]
+ Name=Chinese/English Dictionary
+-Name[zh_TW.Big5]=­^º~/º~­^¦r¨å
+-Name[zh_CN.GB2312]=Ó¢ºº/ººÓ¢×Öµä
++Name[zh_TW]=è‹±æ¼¢/æ¼¢è‹±å­—å…¸
++Name[zh_CN]=è‹±æ±‰/æ±‰è‹±å­—å…¸
+ Comment=A dictionary for Chinese <-> English
+-Comment[zh_TW.Big5]=­^º~/º~­^¦r¨å
+-Comment[zh_CN.GB2312]=Ó¢ºº/ººÓ¢×Öµä
++Comment[zh_TW]=è‹±æ¼¢/æ¼¢è‹±å­—å…¸
++Comment[zh_CN]=è‹±æ±‰/æ±‰è‹±å­—å…¸
+ Exec=pydict -x
+ Icon=/usr/share/icons/dict.xpm
+ Terminal=0

@@ -1,0 +1,20 @@
+--- pyDict-0.2.5.1/dict.py	Mon Sep 18 07:31:48 2000
++++ pyDict-0.2.5.1/dict.py.new	Wed Sep 20 22:22:51 2000
+@@ -284,7 +284,7 @@
+ 			else:
+ 				pro_inp = pro_inp + inp[x]
+ 
+-		command = g_command + ' ".*=.*' + pro_inp + '.*$" ' + dict_path + '*.lib'
++		command = g_command + ' -h ".*=.*' + pro_inp + '.*$" ' + dict_path + '*.lib'
+ 		result_lines = os.popen(command,'r').readlines()
+ 		#if result_lines:
+ 		if result_lines:
+@@ -556,7 +556,7 @@
+ 				else:
+ 					pro_inp = pro_inp + inp[x]
+ 
+-			command = g_command + ' ".*=.*' + pro_inp + '.*$" ' + dict_path + '*.lib'
++			command = g_command + ' -h ".*=.*' + pro_inp + '.*$" ' + dict_path + '*.lib'
+ 			result_lines = os.popen(command,'r').readlines()
+ 			#if result_lines:
+ 			if result_lines != None:

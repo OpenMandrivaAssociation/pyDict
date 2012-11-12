@@ -1,0 +1,24 @@
+--- dict.py.orig	2007-08-24 02:26:11.000000000 +0800
++++ dict.py	2007-08-24 02:27:03.000000000 +0800
+@@ -414,10 +414,10 @@
+ 	Made by Daniel Gau
+ 	<plateau@pagic.net>
+ 	for my lovely wife, Cecile Ho.
+-	""",("OK",),pixmap='/usr/X11R6/lib/X11/pyDict/yaba.xpm')
++	""",("OK",),pixmap='/usr/share/pyDict/yaba.xpm')
+ 	
+     def help_help(self,mi=None):
+-	hd = HelpDialog(file = "/usr/X11R6/lib/X11/pyDict/HELP")
++	hd = HelpDialog(file = "/usr/share/pyDict/HELP")
+ 	hd.show()
+ 	
+ # change proposition
+@@ -604,7 +604,7 @@
+ 
+     # set up grep command
+     g_command = '/bin/grep --ignore-case'
+-    dict_path = '/usr/X11R6/lib/X11/pyDict/'
++    dict_path = '/usr/share/pyDict/'
+ 
+     # check if there is an DISPLAY environment variable
+     if os.environ.has_key('DISPLAY') and len(sys.argv) == 1:
