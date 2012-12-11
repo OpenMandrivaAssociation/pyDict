@@ -71,3 +71,31 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/pydict.real
 %{_iconsdir}/*
 %{_datadir}/applications/pyDict.desktop
+
+
+%changelog
+* Sun May 02 2010 Funda Wang <fwang@mandriva.org> 0.2.5.1-15mdv2010.1
++ Revision: 541549
+- fix perms of desktop file
+
+* Fri Dec 21 2007 Olivier Blin <oblin@mandriva.com> 0.2.5.1-14mdv2009.0
++ Revision: 136445
+- restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Thu Aug 23 2007 Funda Wang <fwang@mandriva.org> 0.2.5.1-14mdv2008.0
++ Revision: 70589
+- clean spec
+- add desktop patch
+
+
+* Fri Mar 16 2007 Nicolas Lécureuil <neoclust@mandriva.org> 0.2.5.1-13mdv2007.1
++ Revision: 144917
+- Fix menu entry and do not use old X path
+- Import pyDict
+
+* Sat Aug 21 2004 Thierry Vignaud <tvignaud@mandrakesoft.com> 0.2.5.1-12mdk
+- fix typo in menu entry
+
