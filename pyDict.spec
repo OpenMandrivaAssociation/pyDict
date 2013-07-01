@@ -1,7 +1,7 @@
 %define pydict_version 0.2.5.1
 %define pydict_release 15
 
-Summary:	pyDict - An English/Chinese Dictionary written with python/gtk
+Summary:	- An English/Chinese Dictionary written with python/gtk
 Name:		pyDict
 Version:	%{pydict_version}
 Release:	%mkrel %{pydict_release}
