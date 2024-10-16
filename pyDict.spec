@@ -2,7 +2,7 @@ Summary:	An English/Chinese Dictionary written with python/gtk
 Name:		pyDict
 Version:	0.2.5.1
 Release:	17
-Url:		http://sourceforge.net/projects/pydict/
+Url:		https://sourceforge.net/projects/pydict/
 License:	GPL
 Group:		Text tools
 
